@@ -1,0 +1,106 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login Checker!</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/client.js" defer></script>
+  </head>
+  <body>
+    <div class="content">
+      <div class="container">
+        <h1>
+          <a href="/">My App <i class="fa fa-play-circle-o"></i></a>
+        </h1>
+        <ul class="list">
+          <li class="a"><a href="views/account">Create An Account</a></li>          
+          <li class="b"><a href="views/login"><i class="fa fa-lock"></i> Sign In</a></li>
+        </ul>
+      </div>
+    </div>        
+
+    <main> 
+    <div class="info">
+      <div class="container">
+      <div class="box">
+        <div class="mo">
+          <p class="si">
+            Sign In To Access Your Account
+          </p>
+        <p>
+          <a href="/views/login2"> <button name="bn" class="five form-control" value="five">
+            Sign In with Email <i class="fa fa-envelope-o"></i>
+            </button> </a>
+        </p>
+        
+        <p>
+         <a href="/auth/google"> <button name="bn" class="three form-control" value="three">
+            Sign In with Google <i class="fa fa-google"></i>
+           </button> </a>
+        </p>            
+        
+        <p>
+          <a href="/auth/twitter"> <button name="bn" class="two form-control" value="two">
+            Sign In with Twitter <i class="fa fa-twitter"></i>
+          </button></a>
+        </p>
+
+        <p>
+          <a href="/auth/facebook"> <button name="bn" class="four form-control" value="four">
+            Sign In with Facebook  <i class="fa fa-facebook"></i>
+            </button></a>
+        </p>
+            
+        <p>
+         <a href="github"> <button name="bn" class="one form-control" value="one">
+            Sign In with Github <i class="fa fa-github"></i>
+           </button> </a>
+        </p>            
+        </div>  
+      </div>
+        
+      
+      </div>
+    </div>
+      
+    <div class="info2">
+      <div class="container">
+        <hr>
+        <p>&copy <are id="are"></are> calm-squash.glitch.me</p>
+        <ul class="ra">
+          <li class="c"><a>Privacy Policy</a></li>
+          <li class="d"><a>Term And Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <script>
+      document.getElementById('are').innerHTML= new Date().getFullYear();  
+    </script>
+      
+    </main>
+
+        
+
+
+  </body>
+</html>
