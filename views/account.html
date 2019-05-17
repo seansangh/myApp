@@ -1,0 +1,397 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login Checker!</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
+    <!-- import the webpage's client-side javascript file -->
+   <script src="/client.js" defer></script>
+   <script src="ejs.min.js"></script>
+   <script>
+    if("<%=un%>"=='nope'){
+      alert('The username is not available')
+    }
+    if("<%=un%>"=='emailNo'){
+      alert('The email is not available')
+    }
+    if("<%=un%>"=='usernameNo'){
+      alert('The username is not available')
+    }
+   </script>
+   <script>
+     $(document).ready(function(){
+       var ma=window.location.search;
+       if(ma.match('&code=')){
+        $('.emailConfirmation').css('display','block');
+                  
+         
+        $('.sZ').on('click', function(){ 
+          var url= document.getElementById('confirm').value;
+          var email= document.getElementById('ema').value;
+           var a= document.getElementById('ema').value;
+           var b= document.getElementById('ema2').value;
+           var c= document.getElementById('user').value;
+           var d= document.getElementById('pass').value;
+           var fn= document.getElementById('fname').value;
+           var ln= document.getElementById('lname').value;
+           var ad= document.getElementById('address').value;
+           var pn= document.getElementById('phone').value;
+           var ci= document.getElementById('city').value;
+           var s= document.getElementById('state').value;
+           var z= document.getElementById('zip').value;
+           var co= document.getElementById('country').value;          
+        
+          window.location.assign('/email2?id='+url+'&email='+email+'&code='+url+'&a='+a+'&b='+b+'&c='+c+'&d='+d+'&fn='+fn+'&ln='+ln+'&ad='+ad+'&ci='+ci+'&s='+s+'&z='+z+'&co='+co+'&pn='+pn);      
+        })
+         
+         
+       }
+     
+     
+       $('.sub2').on('click', function(){
+         if(document.getElementById('fname').value ==""){
+           alert('Please enter your first name')       
+         }         
+         else if(document.getElementById('lname').value ==""){
+           alert('Please enter your last name')       
+         }/*
+         else if(document.getElementById('address').value ==""){
+           alert('Please enter a valid address')       
+         }
+         else if(document.getElementById('city').value ==""){
+           alert('Please enter a valid city')       
+         }
+         else if(document.getElementById('state').value ==""){
+           alert('Please enter a valid state')       
+         }         
+         else if(document.getElementById('zip').value ==""){
+           alert('Please enter a valid zip code')       
+         }
+         else if(document.getElementById('country').value ==""){
+           alert('Please enter a valid country')       
+         }
+         else if(document.getElementById('phone').value ==""){
+           alert('Please enter a valid phone number')       
+         }*/
+         else if(document.getElementById('ema').value ==""){
+           alert('Please enter a valid email address')
+         }
+         else if(document.getElementById('ema2').value ==""){
+           alert('Please confirm your email address')
+         }
+         else if(document.getElementById('user').value ==""){
+           alert('Please enter a valid username')       
+         }
+         else if(document.getElementById('pass').value ==""){
+           alert('Please enter a valid password')       
+         }         
+         else if(document.getElementById('ema').value !="" && document.getElementById('ema2').value !=""){
+           var a= document.getElementById('ema').value;
+           var b= document.getElementById('ema2').value;
+           var c= document.getElementById('user').value;
+           var d= document.getElementById('pass').value;
+           var fn= document.getElementById('fname').value;
+           var ln= document.getElementById('lname').value;
+           var ad= document.getElementById('address').value;
+           var pn= document.getElementById('phone').value;
+           var ci= document.getElementById('city').value;
+           var s= document.getElementById('state').value;
+           var z= document.getElementById('zip').value;
+           var co= document.getElementById('country').value;
+           
+           var da= d.match(/[a-z]/gi).length;
+           var dl= d.length;
+           var ma=window.location.search;
+           
+           if(c.length<6){
+             alert('Username needs to be between 6-15 characters') 
+           }else if(d.length<6){
+             alert('Password needs to be between 6-15 characters') 
+           }else if((dl-da)<2){
+             alert('Password needs to include at least two numbers and/or special characters') 
+           }else if(!a.match(/@/gi)){
+             alert('Invalid Email Format')   
+           }else if(!b.match(/@/gi)){
+             alert('Invalid Email Format')
+           }else if(document.getElementById('ema').value != document.getElementById('ema2').value){
+             alert("Emails don't match")
+           }else if(!ma.match('&test=') || ma.match('&test=1')){
+             window.location.assign('/views/account?a='+a+'&b='+b+'&c='+c+'&d='+d+'&fn='+fn+'&ln='+ln+'&ad='+ad+'&ci='+ci+'&s='+s+'&z='+z+'&co='+co+'&pn='+pn+'&test='+'1')
+           }else if(document.getElementById('confirm').value ==""){
+             
+             
+             $('.emailConfirmation').css('display','block');
+             document.getElementById('eu').innerHTML=a;
+             var randNum= Math.floor(Math.random()*10).toString()+Math.floor(Math.random()*10).toString()+Math.floor(Math.random()*10).toString()+Math.floor(Math.random()*10).toString()+Math.floor(Math.random()*10).toString()+Math.floor(Math.random()*10).toString();
+             
+             window.location.assign('/email?a='+a+'&b='+b+'&c='+c+'&d='+d+'&fn='+fn+'&ln='+ln+'&ad='+ad+'&ci='+ci+'&s='+s+'&z='+z+'&co='+co+'&pn='+pn+'&code='+randNum)
+
+          //   $('.sZ2').on('click', function(){
+             
+          //   });
+             //window.location.assign('/views/account?a='+a+'&b='+b+'&c='+c+'&d='+d+'&fn='+fn+'&ln='+ln+'&ad='+ad+'&ci='+ci+'&s='+s+'&z='+z+'&co='+co+'&pn='+pn)
+             
+           }
+           
+           
+         }
+       })
+     
+     
+     })
+   </script>
+   <script>
+      $(document).ready(function(){
+        $('.ta i').on('mouseover', function(event){
+          $('.span2').css('display','block')
+          $('.span2').css('left', event.pageX)
+          $('.span2').css('top', event.pageY-20+'px')          
+        })
+        $('.ta').on('mouseout', function(event){
+          setTimeout(function(){$('.span2').css('display','none')},3000)
+        })
+        $('.ta2 i').on('mouseover', function(event){
+          $('.span22').css('display','block')
+          $('.span22').css('left', event.pageX)
+          $('.span22').css('top', event.pageY-20+'px')          
+        })
+        $('.ta2').on('mouseout', function(event){
+          setTimeout(function(){$('.span22').css('display','none')},3000)
+        })
+        $('.ta3 i').on('mouseover', function(event){
+          $('.span32').css('display','block')
+          $('.span32').css('left', event.pageX)
+          $('.span32').css('top', event.pageY-20+'px')          
+        })
+        $('.ta3').on('mouseout', function(event){
+          setTimeout(function(){$('.span32').css('display','none')},3000)
+        })        
+        $('.sub2').on('click', function(event){
+          event.preventDefault();
+        })
+      })
+    </script>  
+  </head>
+  <body>
+    
+  <div class="emailConfirmation">
+    <div class="eC1">
+      <div class="eC2">
+        <p class="eC32">
+          <i class="fa fa-close"></i>
+        </p>
+        <p class="eC3">
+          Email Confirmation <i class="fa fa-envelope"></i>
+        </p>        
+        <p class="eC4">
+          A confirmation code was sent to <b><ema id="eu"><%=em%></ema></b>. Please enter the code in the field below in the next 5 minutes to verify your account.
+        </p>
+        <p class="eC5">
+          <input type="text" name="confirm" id="confirm" placeholder="XXXXXX" onfocus="this.placeholder=' '" onblur="this.placeholder='XXXXXX'">
+          <button class="pas">
+            <i class="sZ fa fa-search"></i>
+          </button>         
+        </p>
+      </div>
+    </div>    
+    </div> 
+    <script>
+      $('.fa-close').on('click', function(){
+        $('.emailConfirmation').css('display','none')
+      })
+
+      
+     /* $('.sZ').on('click', function(){
+        var url= document.getElementById('confirm').value;
+        var email= 'tuqwotrprq@gmail.com'
+        
+        window.location.assign('/email2?id='+url+'&email='+email)
+      })*/
+     
+    </script>
+    
+    <div class="content">
+      <div class="container">
+        <h1>
+          <a href="/">My App <i class="fa fa-play-circle-o"></i></a>
+        </h1>
+        <ul class="list">
+          <li class="a"><a href="account">Create An Account</a></li>          
+          <li class="b"><a href="login"><i class="fa fa-lock"></i> Sign In</a></li>
+        </ul>
+      </div>
+    </div>        
+
+    <main>
+    <div class="info">
+      <div class="container">
+    <div class="span2">
+      Must consist of 6-15 characters including numbers, letters, and/or special characters (i.e. ?&%_#)
+    </div>
+    <div class="span22">
+      Enter your email address directly in the field below, and re-enter this email address to confirm it in the field beneath it.
+    </div>
+    <div class="span32">
+      Must consist of 6-15 characters including at least two numbers and/or special characters (i.e. ?&%_#)
+    </div>         
+      <div class="box box2">
+        <div class="mo">
+          <p class="si">
+            Create an Account <i class="fa fa-unlock-alt"></i>
+          </p>
+          <div class="icons">
+            <p class="op">
+              OPTION 1
+            </p>
+            <p class="bns">
+              <a href="/github2"><button class="ic1">
+                Github <i class="fa fa-github"></i>
+              </button></a>
+              <a href="/facebook2"><button class="ic2">
+                Facebook <i class="fa fa-facebook"></i>
+              </button></a>
+              <a href="/twitter2"><button class="ic3">
+                Twitter <i class="fa fa-twitter"></i>
+              </button></a>
+              <a href="/google2"><button class="ic4">
+                Google <i class="fa fa-google"></i>
+              </button></a>
+            </p>
+            <p class="description">
+              Create an account via one of your existing accounts above.
+            </p>            
+            <p class="or">
+              OR
+            </p>
+            
+            <p class="op">
+              OPTION 2
+            </p>
+          </div>
+          <form>
+        <p class="ta">
+         <strong>Step 1)</strong> Enter Your Name 
+        </p>
+        <p>
+          <div class="col-sm-5 c4">
+            <input type="text" id="fname" name="fname" class="form-control" placeholder="First Name"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='First Name'" value="<%=fn%>">
+          </div>
+          <div class="col-sm-7 c6">
+            <input type="text" id="lname" name="lname" class="form-control" placeholder="Last Name"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='Last Name'" value="<%=ln%>">                      
+          </div>            
+        </p>
+        <p class="ta1">
+         <strong>Step 2)</strong> Enter Your Address <optional>(optional)</optional>
+        </p>
+        <p>
+          <input type="text" id="address" name="address" class="form-control" placeholder="Street Address"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='Street Address'" value="<%=a%>">
+        </p>
+        <p>
+          <div class="col-sm-4 c4">
+            <input type="text" id="city" name="city" class="form-control" placeholder="City"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='City'" value="<%=ci%>">
+          </div>
+          <div class="col-sm-4 c4">
+            <input type="text" id="state" name="state" class="form-control" placeholder="State"
+                  onfocus="this.placeholder=''" onblur="this.placeholder='State'" value="<%=s%>">                      
+          </div>
+          <div class="col-sm-4 c4">
+            <input type="text" id="zip" name="zip" class="form-control" placeholder="Zip Code"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='Zip Code'" value="<%=z%>">                      
+          </div>          
+          <div class="c7">
+            <input type="text" id="country" name="country" class="form-control" placeholder="Country"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='Country'" value="<%=co%>">                      
+          </div>            
+        </p>
+        <p class="ta13">
+         <strong>Step 3)</strong> Enter Your Phone Number <optional>(optional)</optional>
+        </p>
+        <p>
+            <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone Number"
+                 maxlength="15" onfocus="this.placeholder=''" onblur="this.placeholder='Phone Number'" value="<%=pn%>">
+        </p> 
+        <p class="ta2">
+         <strong>Step 4)</strong> Enter Your Email Address <i class="fa fa-question-circle"></i>
+        </p>            
+        <p>
+          <input type="email" id="ema" name="email" class="ema form-control" placeholder="Email Address"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='Email Address'" value="<%=em%>">
+        </p>
+        <p>
+          <input type="email" id="ema2" name="email2" class="ema2 form-control" placeholder="Confirm Email Address"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='Confirm Email Address'" value="<%=em2%>">
+        </p>         
+            
+        <p class="ta">
+         <strong>Step 5)</strong> Create a Username <i class="fa fa-question-circle"></i>
+        </p>
+        <p>
+          <input type="text" id="user" name="username" class="form-control" placeholder="Username"
+                 maxlength="15" onfocus="this.placeholder=''" onblur="this.placeholder='Username'" value="<%=u%>"
+                 onkeydown="return (event.keyCode!=50);">
+        </p>
+        <p class="ta3">
+         <strong>Step 6)</strong> Create a Password <i class="fa fa-question-circle"></i>
+        </p>
+        <p>
+          <input type="text" id="pass" name="password" class="form-control" placeholder="Password"
+                 maxlength="15" onfocus="this.placeholder=''" onblur="this.placeholder='Password'" value="<%=p%>">
+        </p>             
+    
+        <p>
+          <input type="submit" name="submit" class="sub2 form-control">
+        </p>                
+                  
+          
+          </form>            
+        </div>  
+      </div>
+        
+      
+      </div>
+    </div>
+      
+    <div class="info2">
+      <div class="container">
+        <hr>
+        <p>&copy <are id="are"></are> calm-squash.glitch.me</p>
+        <ul class="ra">
+          <li class="c"><a>Privacy Policy</a></li>
+          <li class="d"><a>Term And Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <script>
+      document.getElementById('are').innerHTML= new Date().getFullYear();  
+    </script>
+      
+    </main>
+
+        
+
+
+  </body>
+</html>
