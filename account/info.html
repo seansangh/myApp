@@ -1,0 +1,226 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login Checker!</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/client.js" defer></script>
+    <script>
+      $(document).ready(function(){
+        $('.ta i').on('mouseover', function(event){
+          $('.span2').css('display','block')
+          $('.span2').css('left', event.pageX)
+          $('.span2').css('top', event.pageY-20+'px')          
+        })
+        $('.ta').on('mouseout', function(event){
+          setTimeout(function(){$('.span2').css('display','none')},3000)
+        })
+        $('.ta2 i').on('mouseover', function(event){
+          $('.span22').css('display','block')
+          $('.span22').css('left', event.pageX)
+          $('.span22').css('top', event.pageY-20+'px')          
+        })
+        $('.ta2').on('mouseout', function(event){
+          setTimeout(function(){$('.span22').css('display','none')},3000)
+        })
+        $('.ta3 i').on('mouseover', function(event){
+          $('.span32').css('display','block')
+          $('.span32').css('left', event.pageX)
+          $('.span32').css('top', event.pageY-20+'px')          
+        })
+        $('.ta3').on('mouseout', function(event){
+          setTimeout(function(){$('.span32').css('display','none')},3000)
+        })        
+        $('.sub2').on('click', function(event){
+          //event.preventDefault();
+        })
+      })
+    </script>
+    <script>
+      if('<%=error1%>'){
+        alert('The username, <%=error1%>, is not available')
+      }
+      if('<%=error2%>'){
+        alert('The username, <%=error2%>, is not available')
+      }
+      if('<%=error3%>'){
+        alert('The email address, <%=error3%>, is not available')
+      }
+    </script>
+    <script>
+      $(document).ready(function(){
+      var u= document.getElementById('user').value;
+      var p= document.getElementById('pass').value;
+        
+      $('.sub2').on('click', function(event){
+        u= document.getElementById('user').value;
+       // alert(u.length+" "+u)
+        if(u.length<6){
+          event.preventDefault();
+        }
+      })
+        
+        
+      $('#user').on('keydown',function(){
+      // alert('A')
+
+      })
+
+         
+      })
+    </script>
+  </head>
+  <body>
+    <div class="content">
+      <div class="container">
+        <h1>
+          <a href="/account/profile">My App <i class="fa fa-play-circle-o"></i></a>
+        </h1>
+        <ul class="list">
+          <li class="a"><a href="/account/profile">My Account</a></li>          
+          <li class="b"><a href="/views/logout"><i class="fa fa-unlock"></i> Sign Out</a></li>
+        </ul>
+      </div>
+    </div>        
+
+    <main>
+    <div class="info">
+      <div class="container">
+    <div class="span2">
+      Must consist of 6-15 characters including numbers, letters, and/or special characters (i.e. ?&%_#)
+    </div>
+    <div class="span22">
+      Must be a valid email address (e.g. email@address.com).
+    </div>
+    <div class="span32">
+      Must consist of 6-15 characters including at least two numbers and/or special characters (i.e. ?&%_#)
+    </div>         
+      <div class="box box3">
+        <div class="mo">
+          <p class="si si2">
+            Update Your Account <i class="fa fa-unlock-alt"></i>
+          </p>
+          
+          <form method="POST">
+        <p class="ta">
+         <strong>Name</strong> 
+        </p>
+        <p>
+          <div class="col-sm-5 c4">
+            <input type="text" id="fname" name="fname" class="form-control" placeholder="First Name"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='First Name'" value="<%=fn%>">
+          </div>
+          <div class="col-sm-7 c6">
+            <input type="text" id="lname" name="lname" class="form-control" placeholder="Last Name"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='Last Name'" value="<%=ln%>">                      
+          </div>            
+        </p>
+        <p class="ta1">
+         <strong>Address</strong> <optional>(optional)</optional>
+        </p>
+        <p>
+          <input type="text" id="address" name="address" class="form-control" placeholder="Street Address"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='Street Address'" value="<%=docs[0].address%>">
+        </p>
+        <p>
+          <div class="col-sm-4 c4">
+            <input type="text" id="city" name="city" class="form-control" placeholder="City"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='City'" value="<%=docs[0].city%>">
+          </div>
+          <div class="col-sm-4 c4">
+            <input type="text" id="state" name="state" class="form-control" placeholder="State"
+                  onfocus="this.placeholder=''" onblur="this.placeholder='State'" value="<%=docs[0].state%>">                      
+          </div>
+          <div class="col-sm-4 c4">
+            <input type="text" id="zip" name="zip" class="form-control" placeholder="Zip Code"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='Zip Code'" value="<%=docs[0].zip%>">                      
+          </div>          
+          <div class="c7">
+            <input type="text" id="country" name="country" class="form-control" placeholder="Country"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='Country'" value="<%=docs[0].country%>">                      
+          </div>            
+        </p>
+        <p class="ta13">
+         <strong>Phone Number</strong> <optional>(optional)</optional>
+        </p>
+        <p>
+            <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone Number"
+                 maxlength="15" onfocus="this.placeholder=''" onblur="this.placeholder='Phone Number'" value="<%=docs[0].phone%>">
+        </p> 
+        <p class="ta2">
+         <strong>Email Address</strong> <i class="fa fa-question-circle"></i>
+        </p>            
+        <p>
+          <input type="email" id="ema" name="email" class="ema form-control" placeholder="Email Address"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='Email Address'" value="<%=docs[0].email%>">
+        </p>       
+        <p class="ta ta23">
+         <strong>Username</strong> <i class="fa fa-question-circle"></i>
+        </p>
+        <p>
+          <input type="text" id="user" name="username" class="form-control" placeholder="Username"
+                 maxlength="15" onfocus="this.placeholder=''" onblur="this.placeholder='Username'" value="<%=docs[0].name%>"
+                 onkeydown="return (event.keyCode!=50);">
+        </p>
+        <p class="ta3">
+         <strong>Password</strong> <i class="fa fa-question-circle"></i>
+        </p>
+        <p>
+          <input type="text" id="pass" name="password" class="form-control" placeholder="Password"
+                 maxlength="15" onfocus="this.placeholder=''" onblur="this.placeholder='Password'" value="<%=docs[0].password%>">
+        </p>             
+    
+        <p>
+          <input type="submit" name="submit" class="sub2 form-control">
+        </p>                
+                  
+          
+          </form>            
+        </div>  
+      </div>
+        
+      
+      </div>
+    </div>
+      
+    <div class="info2">
+      <div class="container">
+        <hr>
+        <p>&copy <are id="are"></are> calm-squash.glitch.me</p>
+        <ul class="ra">
+          <li class="c"><a>Privacy Policy</a></li>
+          <li class="d"><a>Term And Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <script>
+      document.getElementById('are').innerHTML= new Date().getFullYear();  
+    </script>
+      
+    </main>
+
+        
+
+
+  </body>
+</html>
