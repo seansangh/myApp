@@ -1,0 +1,182 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login Checker!</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/client.js" defer></script>
+    <script src="ejs.min.js"></script>
+    <script>      
+        if("<%=invalid%>"==true){
+          alert('The Username and/or Password is invalid')
+        }
+    </script>
+    <script>
+      $(document).ready(function(){
+        $('#sub').on('click', function(){
+          if(document.getElementById('email').value=="" && document.getElementById('password').value==""){
+            alert('Missing Username and/or Password')
+          }
+          else{
+            window.location.assign('/success2?email='+document.getElementById('email').value+'&password='+document.getElementById('password').value)
+          }
+        })
+      })
+    </script>
+    <script>
+      $(document).ready(function(){
+        $('#sub').on('click', function(event){
+          event.preventDefault(); 
+        })
+        
+        $('#forgot1').on('click',function(){
+          $('#form1').css('display', 'none')
+          $('#form2').css('display','block')
+        })
+        
+        $('#back').on('click',function(){
+          $('#form1').css('display', 'block')
+          $('#form2').css('display','none')
+        })
+      })
+    </script>    
+  </head>
+  <body>
+    <div class="content">
+      <div class="container">
+        <h1>
+          <a href="/">My App <i class="fa fa-play-circle-o"></i></a>
+        </h1>
+        <ul class="list">
+          <li class="a"><a href="account">Create An Account</a></li>          
+          <li class="b"><a href="login"><i class="fa fa-lock"></i> Sign In</a></li>
+        </ul>
+      </div>
+    </div>        
+
+    <main>
+    <div class="info">
+      <div class="container">
+        
+      <div class="box boxy">
+        <div class="mo">
+          <p class="si">
+            Enter Your Account Information
+          </p>
+          <form method="POST" id="form1">
+        <p>
+          <input type="text" name="email" id="email" class="form-control" placeholder="Email Address"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='Email Address'" value="<%=u%>">
+        </p>     
+            
+        <p>
+          <input type="text" name="password" id="password" class="form-control" placeholder="Password"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='Password'"  value="<%=p%>">
+        </p>
+
+        <p class="forgot">
+          <a id="forgot1">Forgot your password?</a>
+        </p>            
+            
+        <p>
+          <input type="submit" name="submit" id="sub" class="sub form-control" value="Submit">
+        </p>   
+            
+        <p class="create">
+          New to My App? <a href="https://calm-squash.glitch.me/views/account">Create an account.</a>
+        </p>
+            
+          </form>
+          
+          <div id="form2" class="login2form2">
+         <p>
+          <input type="text" name="em" id="em" class="form-control" placeholder="Email Address"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='Email Address'" value="<%=em%>">
+           <i class="fa fa-search search2"></i>
+         </p>
+         
+         <p class="form2p">
+           Enter your email address in the field above, and we will send you a temporary password to access your account.
+         </p>
+
+         <p class="form2p2">
+           A temporary password has been sent to: <%=em%>.
+         </p>  
+  
+         <p>
+           <button id="back">
+             <i class="fa fa-arrow-left"></i> Go Back
+           </button>  
+         </p>
+            
+            
+        <p class="create">
+          New to My App? <a href="https://calm-squash.glitch.me/views/account">Create an account.</a>
+        </p>            
+            
+      <script>
+        if("<%=display%>"){
+          $('#form2').css('display', 'block')
+          $('#form1').css('display', 'none')         
+        }
+        if("<%=error%>"){
+          alert("<%=error%>")
+        }
+        $('.search2').on('click', function(){
+          if(document.getElementById('em').value){
+            //alert(document.getElementById('email').value)
+            window.location.assign("/forgot_password?email="+document.getElementById('em').value+"&display=2")
+          }
+        })        
+      </script>     
+              
+          </div>
+           
+        </div>  
+      </div>
+        
+      
+      </div>
+    </div>
+      
+    <div class="info2">
+      <div class="container">
+        <hr>
+        <p>&copy <are id="are"></are> calm-squash.glitch.me</p>
+        <ul class="ra">
+          <li class="c"><a>Privacy Policy</a></li>
+          <li class="d"><a>Term And Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <script>
+      document.getElementById('are').innerHTML= new Date().getFullYear();  
+    </script>
+      
+    </main>
+
+        
+
+
+  </body>
+</html>
